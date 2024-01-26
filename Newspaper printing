@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract NewspaperPrinting {
+    uint256 public totalInk = 10; // Total ink in ml
+
+ 
+    function printNewspaper(uint256 paperSize, bool hasCyan, bool hasMagenta, bool hasYellow, bool hasBlack) public pure {
+   
+        assert(paperSize > 420);
+
+        // Require statement for color presence
+        require(hasCyan, "Cyan color is absent");
+        require(hasMagenta, "Magenta color is absent");
+        require(hasYellow, "Yellow color is absent");
+        require(hasBlack, "Black color is absent");
+
+       
+    }
+
+function printCopies(uint256 numberOfCopies) public {
+  
+    if (numberOfCopies > 100) {
+        revert("Warning: Insufficient ink left");
+    } else {
+       
+        totalInk -= numberOfCopies;
+    }
+}
+
+}
